@@ -10,7 +10,6 @@ The repository aim is to create workload for Filenet on Kubernetes platform and 
 ![](https://img.shields.io/github/issues/gokcenkarasu/eFilenetWorkload.svg) 
 ![](https://img.shields.io/bower/v/FilenetWorkload.svg)
 
-
 <!-- vscode-markdown-toc -->
 
 * 1.. [Summary](#Summary)
