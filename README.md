@@ -3,12 +3,12 @@
 The repository aim is to create workload for Filenet on Kubernetes platform and traditional systems. 
 
 
-![](https://img.shields.io/github/stars/gokcenkarasu/FilenetWorkload/editor.md.svg) 
-![](https://img.shields.io/github/forks/gokcenkarasu/editor.md.svg) 
-![](https://img.shields.io/github/tag/gokcenkarasu/editor.md.svg) 
-![](https://img.shields.io/github/release/gokcenkarasu/editor.md.svg) 
-![](https://img.shields.io/github/issues/gokcenkarasu/editor.md.svg) 
-![](https://img.shields.io/bower/v/editor.md.svg)
+![](https://img.shields.io/github/stars/gokcenkarasu/FilenetWorkload.svg) 
+![](https://img.shields.io/github/forks/gokcenkarasu/FilenetWorkload.svg) 
+![](https://img.shields.io/github/tag/gokcenkarasu/FilenetWorkload.svg) 
+![](https://img.shields.io/github/release/gokcenkarasu/FilenetWorkload.svg) 
+![](https://img.shields.io/github/issues/gokcenkarasu/eFilenetWorkload.svg) 
+![](https://img.shields.io/bower/v/FilenetWorkload.svg)
 
 
 <!-- vscode-markdown-toc -->
