@@ -24,3 +24,27 @@ The repository aim is to create workload for Filenet on Kubernetes platform and 
 <!-- vscode-markdown-toc-config numbering=true autoSave=true /vscode-markdown-toc-config -->
 
 <!-- /vscode-markdown-toc -->
+
+##  5. <a name='RunContainer'></a>How to run container version?
+
+I used IBM JAVA container as a base of this program.
+
+[Oracle Test Connection Docker Hub](https://hub.docker.com/repository/docker/gokcenk/filenetworkload)
+
+> `docker pull gokcenk/filenetworkload`
+
+###  5.1. <a name='InDocker'></a>In Docker
+
+>  `docker run -it --rm filenetworkload`
+
+###  5.2. <a name='InKubernetes'></a>In Kubernetes
+
+> `kubectl run orcl --image=gokcenk/filenetworkload -it --rm`    
+
+###  5.2. <a name='InOpenshift'></a>In Openshift
+
+> `kubectl run orcl --image=gokcenk/filenetworkload -it --rm`    
+
+##  6. <a name='RunJarVerison'></a>How to run container version?
+
+ > `java -jar FilenetWorkload.jar`
