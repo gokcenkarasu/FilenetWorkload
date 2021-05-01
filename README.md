@@ -39,11 +39,11 @@ I used IBM JAVA container as a base of this program.
 
 ###  5.2. <a name='InKubernetes'></a>In Kubernetes
 
-> `kubectl run orcl --image=gokcenk/filenetworkload -it --rm`    
+> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
 
 ###  5.2. <a name='InOpenshift'></a>In Openshift
 
-> `kubectl run orcl --image=gokcenk/filenetworkload -it --rm`    
+> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
 
 ##  6. <a name='RunJarVerison'></a>How to run container version?
 
