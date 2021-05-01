@@ -29,7 +29,7 @@ The repository aim is to create workload for Filenet on Kubernetes platform and 
 
 I used IBM JAVA container as a base of this program.
 
-[Oracle Test Connection Docker Hub](https://hub.docker.com/repository/docker/gokcenk/filenetworkload)
+[Filenet Workload Connection Docker Hub](https://hub.docker.com/repository/docker/gokcenk/filenetworkload)
 
 > `docker pull gokcenk/filenetworkload`
 
