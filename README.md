@@ -67,26 +67,26 @@ Both of them are using the same java codes of which you can find the details bel
 	** 3- AddDocument = This is main method which implements Runnable class and include uploading and creating files methods.
 	
 
-	Please enter thread size :
-	
-	File Sizes : xs = 1K
-	File Sizes : s  = 10K
-	File Sizes : m  = 100K
-	File Sizes : l  = 1000K
-	File Sizes : xl = 10000K
-	Please enter sample file sizes (xs/s/m/l/xl) :
-	
-	Please enter Username :
-	
-	Please enter Password :
-	
-	Please enter Object Store Name :
-	
-	Please enter Folder Name :
-	
-	Please enter Server Url :
-	
-	Please enter Port :
+		Please enter thread size :
+
+		File Sizes : xs = 1K
+		File Sizes : s  = 10K
+		File Sizes : m  = 100K
+		File Sizes : l  = 1000K
+		File Sizes : xl = 10000K
+		Please enter sample file sizes (xs/s/m/l/xl) :
+
+		Please enter Username :
+
+		Please enter Password :
+
+		Please enter Object Store Name :
+
+		Please enter Folder Name :
+
+		Please enter Server Url :
+
+		Please enter Port :
 
 
 If you select one of those options, the program executes only the selected one, if you enter "ALL" keyword, the program executes all of them to test it. 
