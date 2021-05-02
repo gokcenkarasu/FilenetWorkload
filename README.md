@@ -51,6 +51,54 @@ Both of them are using the same java codes of which you can find the details bel
 
 ![Alt text](images/screenShotTerminal.png "filenetworkload")
 
+
+##  2. <a name='JavaCode'></a>Java Code
+
+*  I developed Javacode with 1.8 JDK in Eclipse development environment. 
+ 	
+	There are 3 Classes to run this jar program. 
+	
+	** 1- ConnectionInfo = This is static abstraction class to use collecting data from getting user. 
+	
+	** 2- MultiThreadUpload = This includes runnable method and is using to get some information from user also extends ConnectionInfo class. First it checks system enviorment to get parameters then it wants parameters from operators.
+	It has time units sleep method to wait thread until wait to runnig containers. 
+	`TimeUnit.SECONDS.sleep(6);`
+	
+	** 3- AddDocument = This is main method which implements Runnable class and include uploading and creating files methods.
+	
+
+	Please enter thread size :
+	
+	File Sizes : xs = 1K
+	File Sizes : s  = 10K
+	File Sizes : m  = 100K
+	File Sizes : l  = 1000K
+	File Sizes : xl = 10000K
+	Please enter sample file sizes (xs/s/m/l/xl) :
+	
+	Please enter Username :
+	
+	Please enter Password :
+	
+	Please enter Object Store Name :
+	
+	Please enter Folder Name :
+	
+	Please enter Server Url :
+	
+	Please enter Port :
+
+
+If you select one of those options, the program executes only the selected one, if you enter "ALL" keyword, the program executes all of them to test it. 
+
+ 
+##  3. <a name='ProductVersions'></a>Product Versions
+	
+This is 1.4 version of the program. 
+	
+I used Java 1.8 so If you are planning to use this standalone jar version please check your java version in your environment. Also if you want to use container version of the program, you need to have to at least one of these platforms: Docker, Podman, Kubernetes or Openshift.  Please check kubernetes client version , it must be min 1.10 version to run correctly kubectl codes below.
+
+
 ##  5. <a name='RunContainer'></a>How to run container version?
 
 I used IBM JAVA container as a base of this program.
@@ -74,4 +122,3 @@ I used IBM JAVA container as a base of this program.
 ##  6. <a name='RunJarVerison'></a>How to run container version?
 
  > `java -jar FilenetWorkload.jar`
-
