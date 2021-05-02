@@ -98,6 +98,15 @@ This is 1.4 version of the program.
 	
 I used Java 1.8 so If you are planning to use this standalone jar version please check your java version in your environment. Also if you want to use container version of the program, you need to have to at least one of these platforms: Docker, Podman, Kubernetes or Openshift.  Please check kubernetes client version , it must be min 1.10 version to run correctly kubectl codes below.
 
+##  4. <a name='PreRequirements'></a>Pre-Requirements
+<br/>
+
+	* For Jar version; 
+		1.8 Java JRE, Oracle Databese version 19x
+		
+	* For Contanirazed version;
+		Openshift 3.x or newer versions, Docker 17.x or newer versions, Kubernetes 1.x or newer versions.
+<br/>
 
 ##  5. <a name='RunContainer'></a>How to run container version?
 
