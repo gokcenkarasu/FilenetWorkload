@@ -131,3 +131,5 @@ I used IBM JAVA container as a base of this program.
 ##  6. <a name='RunJarVerison'></a>How to run container version?
 
  > `java -jar FilenetWorkload.jar`
+
+🧿
