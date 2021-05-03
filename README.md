@@ -50,7 +50,7 @@ There are 2 different options to use this program:
 Both of them are using the same java codes of which you can find the details below. 
 
 
-![Alt text](resoruces/images/ScreenShot_parameters.png "filenetworkload")
+![Alt text](resources/images/ScreenShot_parameters.png "filenetworkload")
 
 
 ##  2. <a name='JavaCode'></a>Java Code
