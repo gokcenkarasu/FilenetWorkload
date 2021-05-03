@@ -16,12 +16,13 @@ The repository aim is to create workload for Filenet on Kubernetes platform and 
 * 1.[Summary](#Summary)
 * 2.[Java Code](#JavaCode)
 * 3.[Product Versions](#ProductVersions)
-* 4.[Pre-Requirements](#PreRequirements)
-* 5.[How to run container version](#RunContainer)
-	* 5.1. [In Docker](#InDocker)
-	* 5.2. [In Kubernetes](#InKubernetes)
-	* 5.3. [In Openshift](#InOpenshift)
-* 6.[How to run jar version](#RunJarVerison)
+* 4.[How to enable auto-scale feature for CPE pods on Openshift](#EnableAuto)
+* 5.[Pre-Requirements](#PreRequirements)
+* 6.[How to run container version](#RunContainer)
+	* 6.1. [In Docker](#InDocker)
+	* 6.2. [In Kubernetes](#InKubernetes)
+	* 6.3. [In Openshift](#InOpenshift)
+* 7.[How to run jar version](#RunJarVerison)
 
 <!-- vscode-markdown-toc-config numbering=true autoSave=true /vscode-markdown-toc-config -->
 
@@ -98,7 +99,79 @@ This is 1.4 version of the program.
 	
 I used Java 1.8 so If you are planning to use this standalone jar version please check your java version in your environment. Also if you want to use container version of the program, you need to have to at least one of these platforms: Docker, Podman, Kubernetes or Openshift.  Please check kubernetes client version , it must be min 1.10 version to run correctly kubectl codes below.
 
-##  4. <a name='PreRequirements'></a>Pre-Requirements
+##  4. <a name='EnableAuto'></a>How to enable auto-scale feature for CPE pods on Openshift
+
+Before the running the program you need to enabled autoscale function CPE pods. Default is disable for each pods. 
+
+You can find the example yaml file to deploy filenet on OS. Each pod has defalt parameters if you define any thing and all pods have disabled for autoscale. 
+
+To enable the function you need to define deatils part of pods. I will give you exaple for CPE pod. 
+
+''''yaml
+ecm_configuration:
+    cpe:
+      arch:
+        amd64: "3 - Most preferred"
+      replica_count: 1
+      # Set UID within value of openshift.io/sa.scc.uid-range in namespace's specs, 
+      # If comment it, will use UID auto assigned by OCP
+      # run_as_user: 1000110001
+      image:
+        repository: cp.icr.io/cp/cp4a/fncm/cpe
+        tag: ga-556-p8cpe
+        pull_policy: IfNotPresent
+      ## Logging for workloads
+      log:
+       format: json
+      ## resource
+      resources:
+        requests:
+          cpu: 500m
+          memory: 512Mi
+        limits:
+          cpu: 1
+          memory: 3072Mi
+      ## Horizontal Pod Autoscaler
+      auto_scaling:
+        enabled: false
+        max_replicas: 3
+        min_replicas: 1
+        target_cpu_utilization_percentage: 80
+      cpe_production_setting:
+        time_zone: Etc/UTC
+        jvm_initial_heap_percentage: 18
+        jvm_max_heap_percentage: 33
+        gcd_jndi_name: FNGCDDS
+        gcd_jndixa_name: FNGCDDSXA
+        license_model: FNCM.PVUNonProd
+        license: accept
+      monitor_enabled: false
+      logging_enabled: false
+      ## Specify the name of the Existing Claim to be used by your application
+      ## empty string means don't use an existClaim
+      ## Existing Persistence parameters for CPE
+      datavolume:
+        existing_pvc_for_cpe_cfgstore: "cpe-cfgstore"
+        existing_pvc_for_cpe_logstore: "cpe-logstore"
+        existing_pvc_for_cpe_filestore: "cpe-filestore"
+        existing_pvc_for_cpe_icmrulestore: "cpe-icmrulesstore"
+        existing_pvc_for_cpe_textextstore: "cpe-textextstore"
+        existing_pvc_for_cpe_bootstrapstore: "cpe-bootstrapstore"
+        existing_pvc_for_cpe_fnlogstore: "cpe-fnlogstore"
+      probe:
+        readiness:
+          initial_delay_seconds: 150
+          period_seconds: 5
+          timeout_seconds: 10
+          failure_threshold: 6
+        liveness:
+          initial_delay_seconds: 600
+          period_seconds: 5
+          timeout_seconds: 5
+          failure_threshold: 6 
+
+
+##  5. <a name='PreRequirements'></a>Pre-Requirements
 <br/>
 
 	* For Jar version; 
@@ -108,7 +181,7 @@ I used Java 1.8 so If you are planning to use this standalone jar version please
 		Openshift 3.x or newer versions, Docker 17.x or newer versions, Kubernetes 1.x or newer versions.
 <br/>
 
-##  5. <a name='RunContainer'></a>How to run container version?
+##  6. <a name='RunContainer'></a>How to run container version?
 
 I used IBM JAVA container as a base of this program.
 
@@ -116,19 +189,19 @@ I used IBM JAVA container as a base of this program.
 
 > `docker pull gokcenk/filenetworkload`
 
-###  5.1. <a name='InDocker'></a>In Docker
+###  6.1. <a name='InDocker'></a>In Docker
 
 >  `docker run -it --rm filenetworkload`
 
-###  5.2. <a name='InKubernetes'></a>In Kubernetes
+###  6.2. <a name='InKubernetes'></a>In Kubernetes
 
 > `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
 
-###  5.2. <a name='InOpenshift'></a>In Openshift
+###  6.2. <a name='InOpenshift'></a>In Openshift
 
 > `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
 
-##  6. <a name='RunJarVerison'></a>How to run container version?
+##  7. <a name='RunJarVerison'></a>How to run container version?
 
  > `java -jar FilenetWorkload.jar`
 
