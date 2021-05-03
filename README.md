@@ -191,6 +191,11 @@ I used IBM JAVA container as a base of this program.
 
 > `docker pull gokcenk/filenetworkload`
 
+Program has need some parameter for running
+```
+THREAD_NUMBER | FILE_SIZE | USERNAME | PASSWORD | OBJECT_STORE | FOLDER_NAME | SERVER_URL | SERVER_PORT
+```
+
 ###  6.1. <a name='InDocker'></a>In Docker
 
 >  `docker run -it --rm filenetworkload`
