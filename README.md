@@ -107,6 +107,8 @@ You can find the example yaml file to deploy filenet on OS. Each pod has defalt 
 
 To enable the function you need to define deatils part of pods. I will give you exaple for CPE pod. 
 
+First, you have to set limit varaibles to limit each pods. Then set  auto_scalaing > enabled = true and your min and max autoscale size. Finally you should set target_cpu_utilization_percentage for what is your trigger for new pod.
+
 ```yaml
 ecm_configuration:
     cpe:
@@ -130,13 +132,13 @@ ecm_configuration:
           memory: 512Mi
         limits:
           cpu: 1
-          memory: 3072Mi
+          memory: 1024Mi
       ## Horizontal Pod Autoscaler
       auto_scaling:
-        enabled: false
-        max_replicas: 3
+        enabled: true
+        max_replicas: 6
         min_replicas: 1
-        target_cpu_utilization_percentage: 80
+        target_cpu_utilization_percentage: 40
       cpe_production_setting:
         time_zone: Etc/UTC
         jvm_initial_heap_percentage: 18
