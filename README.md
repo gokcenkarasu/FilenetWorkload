@@ -50,7 +50,7 @@ There are 2 different options to use this program:
 Both of them are using the same java codes of which you can find the details below. 
 
 
-![Alt text](images/screenShotTerminal.png "filenetworkload")
+![Alt text](images/ScreenShot_parameters.png "filenetworkload")
 
 
 ##  2. <a name='JavaCode'></a>Java Code
@@ -199,14 +199,20 @@ THREAD_NUMBER | FILE_SIZE | USERNAME | PASSWORD | OBJECT_STORE | FOLDER_NAME | S
 ###  6.1. <a name='InDocker'></a>In Docker
 
 >  `docker run -it --rm filenetworkload`
+OR
+>  `docker run -e THREAD_NUMBER=100 -e FILE_SIZE=s -e USERNAME=gokcen -e PASSWORD=karasu  -e OBJECT_STORE=OBSE1 -e FOLDER_NAME=Test  -e SERVER_URL=http://filenetserver.eu-de.containers.appdomain.cloud -e SERVER_PORT=80  -it --rm filenetworkload`
 
 ###  6.2. <a name='InKubernetes'></a>In Kubernetes
 
-> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
+You should to set Java heap size with JAVA_OPTS='-Xmx4g' variable and define min memory siz for this pods. Also you need to set labels to internal connection allow, you can set it such as pods labals. 
+
+if you need you can add other enviorments in this command.
+
+> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm --env="JAVA_OPTS='-Xmx4g'" --requests='memory=4Gi' --labels='app=icp4a-prod-103-cpe-deploy' `
 
 ###  6.2. <a name='InOpenshift'></a>In Openshift
 
-> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm`    
+> `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm --env="JAVA_OPTS='-Xmx4g'" --requests='memory=4Gi' --labels='app=icp4a-prod-103-cpe-deploy' `
 
 ##  7. <a name='RunJarVerison'></a>How to run container version?
 
