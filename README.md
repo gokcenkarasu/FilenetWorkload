@@ -199,7 +199,7 @@ THREAD_NUMBER | FILE_SIZE | USERNAME | PASSWORD | OBJECT_STORE | FOLDER_NAME | S
 ###  6.1. <a name='InDocker'></a>In Docker
 
 >  `docker run -it --rm filenetworkload`
-OR
+<br/> OR <br/>
 >  `docker run -e THREAD_NUMBER=100 -e FILE_SIZE=s -e USERNAME=gokcen -e PASSWORD=karasu  -e OBJECT_STORE=OBSE1 -e FOLDER_NAME=Test  -e SERVER_URL=http://filenetserver.eu-de.containers.appdomain.cloud -e SERVER_PORT=80  -it --rm filenetworkload`
 
 ###  6.2. <a name='InKubernetes'></a>In Kubernetes
