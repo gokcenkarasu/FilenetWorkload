@@ -107,7 +107,7 @@ You can find the example yaml file to deploy filenet on OS. Each pod has defalt 
 
 To enable the function you need to define deatils part of pods. I will give you exaple for CPE pod. 
 
-''''yaml
+```yaml
 ecm_configuration:
     cpe:
       arch:
