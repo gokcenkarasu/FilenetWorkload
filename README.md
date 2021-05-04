@@ -7,9 +7,9 @@
 ![](https://img.shields.io/github/issues/gokcenkarasu/eFilenetWorkload.svg) 
 ![](https://img.shields.io/bower/v/FilenetWorkload.svg)
 
-The repository aim is to create workload for Filenet on Kubernetes platform and traditional systems. 
+The aim of this repository is to create workload for Filenet on Kubernetes platform and traditional systems. 
 
-> **Disclaimer:** If you are planning to use this standalone jar version please check your java version in your environment and please check the pre-requirments for your system. 
+> **Disclaimer:** If you are planning to use this standalone jar version please check your java version in your environment and please check the pre-requirements for your system.
 
 <!-- vscode-markdown-toc -->
 
@@ -30,21 +30,21 @@ The repository aim is to create workload for Filenet on Kubernetes platform and 
 
 ##  1. <a name='Summary'></a>Summary
 
-This asset is created to show how to auto scale IBM Filenet pods and network performans on Kubernetes (Openshift) platform or you can run it to created workload on traditional Filenet deployment.
+This asset is created to show how to auto scale IBM Filenet pods and network performance on Kubernetes (Openshift) platform or you can run it to create workload on traditional Filenet deployment.
 
 There are two different options you can select: 
 Runnable container version or standalone jar version.
 
-When you would like to see how to run auto scale Filenet pods in Openshift, you need to create manuel upload,read,review transactions at the same time, so it is hard to make it at the same time.
-This program support to you to create diffrent files to upload your system at the same time by multi-thread features. 
+If you want to see how to run auto scale Filenet pods in Openshift, you need to create manuel upload, read, review transactions at the same time, which is hard to run at the same time.
+This program supports to you to create multiple files to upload your system at the same time by multi-thread features. 
 
-The program able to select how many files do you upload and which size files. 
+You can select number of and size of the fies to upload though the program.
 
-If you prefer to select using container version, you can enter the parameters when docker starting like enviortment or after  the startting container , program asks you these parameters. 
+If you prefer to select using container version, you can enter the parameters when docker starts as enviortment parameters or after the container starts, the program asks you these parameters. 
 
 There are 2 different options to use this program:
 	
-> * Fist one is contianer base system. 
+> * Fist one is container base system. 
 > * Second one is Jar base system. 
 	
 Both of them are using the same java codes of which you can find the details below. 
@@ -59,13 +59,13 @@ Both of them are using the same java codes of which you can find the details bel
  	
 	There are 3 Classes to run this jar program. 
 	
-	** 1- ConnectionInfo = This is static abstraction class to use collecting data from getting user. 
+	** 1- ConnectionInfo = This is static abstraction class to be used for collecting data from user. 
 	
-	** 2- MultiThreadUpload = This includes runnable method and is using to get some information from user also extends ConnectionInfo class. First it checks system enviorment to get parameters then it wants parameters from operators.
-	It has time units sleep method to wait thread until wait to runnig containers. 
+	** 2- MultiThreadUpload = This includes runnable method and used to get some information from the user, and also it extends ConnectionInfo class. First it checks system enviorment to get parameters then it requires parameters from operators.
+	It has time units sleep method to sleep thread until containers run. 
 	`TimeUnit.SECONDS.sleep(6);`
 	
-	** 3- AddDocument = This is main method which implements Runnable class and include uploading and creating files methods.
+	** 3- AddDocument = This is main class which was implemented Runnable class and includes has method upload and creat files.
 	
 ```note
 Please enter thread size :
@@ -89,25 +89,22 @@ Please enter Server Url :
 
 Please enter Port :
 ```
-
-If you select one of those options, the program executes only the selected one, if you enter "ALL" keyword, the program executes all of them to test it. 
-
  
 ##  3. <a name='ProductVersions'></a>Product Versions
 	
 This is 1.4 version of the program. 
 	
-I used Java 1.8 so If you are planning to use this standalone jar version please check your java version in your environment. Also if you want to use container version of the program, you need to have to at least one of these platforms: Docker, Podman, Kubernetes or Openshift.  Please check kubernetes client version , it must be min 1.10 version to run correctly kubectl codes below.
+I used Java 1.8 so If you are planning to use this standalone jar version please check your java version in your environment. If you want to use container version of the program, you need to have at least one of these platforms: Docker, Podman, Kubernetes or Openshift. Please check kubernetes client version, it must be min 1.10 version to run the kubectl codes below correctly.
 
 ##  4. <a name='EnableAuto'></a>How to enable auto-scale feature for CPE pods on Openshift
 
-Before the running the program you need to enabled autoscale function CPE pods. Default is disable for each pods. 
+Before running the program you need to enable autoscale function for CPE pods. Default setting is disabled for each pod. 
 
-You can find the example yaml file to deploy filenet on OS. Each pod has defalt parameters if you define any thing and all pods have disabled for autoscale. 
+You can find an example yaml file under the resource folder to deploy filenet on OS. Each pod has defalt parameters if you want to change those parameters you need to re-define these parameters in yaml file.  
 
-To enable the function you need to define deatils part of pods. I will give you exaple for CPE pod. 
+To enable auto scale function you need to define it in detailed part of pods. I will give you an example for CPE pod. 
 
-First, you have to set limit varaibles to limit each pods. Then set  auto_scalaing > enabled = true and your min and max autoscale size. Finally you should set target_cpu_utilization_percentage for what is your trigger for new pod.
+First, you have to set limit variables to limit each pod. Then set auto_scaling > enabled = true and your min and max autoscale size. Finally you should set target_cpu_utilization_percentage to trigger the creation of new pod.
 
 ```yaml
 ecm_configuration:
@@ -191,7 +188,7 @@ I used IBM JAVA container as a base of this program.
 
 > `docker pull gokcenk/filenetworkload`
 
-Program has need some parameter for running
+The Program needs the parameters below for running.
 ```
 THREAD_NUMBER | FILE_SIZE | USERNAME | PASSWORD | OBJECT_STORE | FOLDER_NAME | SERVER_URL | SERVER_PORT
 ```
@@ -204,9 +201,9 @@ THREAD_NUMBER | FILE_SIZE | USERNAME | PASSWORD | OBJECT_STORE | FOLDER_NAME | S
 
 ###  6.2. <a name='InKubernetes'></a>In Kubernetes
 
-You should to set Java heap size with JAVA_OPTS='-Xmx4g' variable and define min memory siz for this pods. Also you need to set labels to internal connection allow, you can set it such as pods labals. 
+You should set Java heap size with JAVA_OPTS='-Xmx4g' variable and define min memory size for this pod. Also you need to set labels to allow internal connection, you can set it as pods labels. 
 
-if you need you can add other enviorments in this command.
+If you need, you can add other environments in this command.
 
 > `kubectl run flntwrkld --image=gokcenk/filenetworkload -it --rm --env="JAVA_OPTS='-Xmx4g'" --requests='memory=4Gi' --labels='app=icp4a-prod-103-cpe-deploy' `
 
